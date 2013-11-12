@@ -25,7 +25,7 @@ module TagSequenceMatcher
 
   class Dictionary
 
-    UsableLetters = [(0..9), (?a..?z), (?A..?Z)].flatten
+    UsableLetters = [(0..9), (?a..?z), (?A..?Z)].map(&:to_a).flatten
 
     def initialize(list)
       @list = list.uniq
