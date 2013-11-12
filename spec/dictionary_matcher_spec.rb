@@ -1,6 +1,6 @@
-require 'tag_sequence_matcher'
+require 'array_sequence_matcher'
 
-describe TagSequenceMatcher::DictionaryMatcher do
+describe ArraySequenceMatcher::DictionaryMatcher do
 
   context "2 strings pattern" do
 
@@ -30,8 +30,16 @@ describe TagSequenceMatcher::DictionaryMatcher do
 
   end
 
+  context "Too long pattern" do
+    it "should fail to use matcher" do
+      too_long_pattern = ArraySequenceMatcher::Dictionary::UsableLetters + ['@']
+
+      expect { instance(too_long_pattern).match(%w(ASD)) }.to raise_error(ArgumentError)
+    end
+  end
+
   def instance(list)
-    TagSequenceMatcher::DictionaryMatcher.new(list)
+    ArraySequenceMatcher::DictionaryMatcher.new(list)
   end
 
 end

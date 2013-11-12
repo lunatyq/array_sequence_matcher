@@ -1,6 +1,6 @@
 require 'active_support/core_ext'
-require 'tag_sequence_matcher/dictionary_matcher'
-module TagSequenceMatcher
+require 'array_sequence_matcher/dictionary_matcher'
+module ArraySequenceMatcher
 
   def self.from_tags(*list)
     DictionaryMatcher.new(list.flatten)

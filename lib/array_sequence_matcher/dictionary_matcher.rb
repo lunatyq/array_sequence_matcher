@@ -1,4 +1,4 @@
-module TagSequenceMatcher
+module ArraySequenceMatcher
 
   class DictionaryMatcher
 
@@ -29,6 +29,10 @@ module TagSequenceMatcher
 
     def initialize(list)
       @list = list.uniq
+
+      if @list.size > UsableLetters.size
+        raise ArgumentError.new("dictionary too long")
+      end
     end
 
     delegate :[], :to => :mapper
